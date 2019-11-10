@@ -2,6 +2,8 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
+using GitHub_Mirror_Fetcher.Models;
+using GitHub_Mirror_Fetcher.Repository;
 using Microsoft.AspNetCore.Mvc;
 
 namespace GitHub_Mirror_Fetcher.Controllers
@@ -12,9 +14,10 @@ namespace GitHub_Mirror_Fetcher.Controllers
     {
         // GET api/values
         [HttpGet]
-        public ActionResult<IEnumerable<string>> Get()
+        public IEnumerable<Student> Get()
         {
-            return new string[] { "value1", "value2" };
+            var repo = new StudentRepository();
+            return repo.getAll();
         }
 
         // GET api/values/5
