@@ -14,10 +14,10 @@ namespace GitHub_Mirror_Fetcher.Controllers
     {
         // GET api/values
         [HttpGet]
-        public IEnumerable<Student> Get()
+        public IEnumerable<string> Get()
         {
-            var repo = new StudentRepository();
-            return repo.getAll();
+            var repo = new UserRepository();
+            return repo.getAllLocations();
         }
 
         // GET api/values/5

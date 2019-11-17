@@ -12,7 +12,9 @@ namespace GitHub_Mirror_Fetcher.Repository
 {
     public class StudentRepository : IStudentRepository
     {
-        public MySqlConnection sqlConnection = new MySqlConnection("Server=IPDAMAQUINA; Uid=USUARIO; Pwd=SENHA ;Database=test;");
+        //public MySqlConnection sqlConnection = new MySqlConnection("Server=IPDAMAQUINA; Uid=USUARIO; Pwd=SENHA ;Database=test;");
+
+        public MySqlConnection sqlConnection = new MySqlConnection("Server=34.238.220.208; Uid=sa; Pwd=testando ;Database=test;");
         
         public IEnumerable<Student> getAll()
         {
