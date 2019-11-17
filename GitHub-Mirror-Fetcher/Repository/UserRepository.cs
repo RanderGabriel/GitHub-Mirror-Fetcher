@@ -1,4 +1,5 @@
 ﻿using Dapper;
+using GitHub_Mirror_Fetcher.Models;
 using MySql.Data.MySqlClient;
 using System;
 using System.Collections.Generic;
@@ -9,12 +10,19 @@ namespace GitHub_Mirror_Fetcher.Repository
 {
     public class UserRepository : IUserRepository
     {
-        public MySqlConnection sqlConnection = new MySqlConnection("Server=127.0.0.1; Uid=root; Pwd=******* ;Database=ghtorrent_restore;");
+        public MySqlConnection sqlConnection = new MySqlConnection("Server=127.0.0.1; Uid=root; Pwd=rootpassword ;Database=ghtorrent_restore;");
         
-        public IEnumerable<string> getAllLocations()
+        public IEnumerable<string> GetLocations(int page)
         {
             sqlConnection.Open();
-            var query = sqlConnection.Query<string>("SELECT distinct(location) FROM users LIMIT 100;");
+            var query = sqlConnection.Query<string>($"SELECT DISTINCT(location) FROM users LIMIT {page*100}, 100;");
+            return query;
+        }
+
+        public IEnumerable<User> GetUsers(int page)
+        {
+            sqlConnection.Open();
+            var query = sqlConnection.Query<User>($"SELECT * FROM users LIMIT {page * 100}, 100");
             return query;
         }
     }
