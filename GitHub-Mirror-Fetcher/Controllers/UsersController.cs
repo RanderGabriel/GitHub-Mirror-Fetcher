@@ -12,7 +12,7 @@ namespace GitHub_Mirror_Fetcher.Controllers
     [ApiController]
     public class UsersController : ControllerBase
     {
-        public UserRepository _userRepo;
+        public IUserRepository _userRepo;
         public UsersController()
         {
             _userRepo = new UserRepository();
@@ -22,6 +22,12 @@ namespace GitHub_Mirror_Fetcher.Controllers
         public IEnumerable<User> Get(int page = 0)
         {
             return _userRepo.GetUsers(page);
+        }
+        //GET api/users/{id}/projects
+        [HttpGet("{id}/projects")]
+        public IEnumerable<Project> GetProjectsForUser(int id)
+        {
+            return _userRepo.GetUserProjects(id);
         }
         // GET api/users/locations
         [HttpGet("locations")]

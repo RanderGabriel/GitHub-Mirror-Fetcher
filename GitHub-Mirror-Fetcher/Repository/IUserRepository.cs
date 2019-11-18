@@ -6,9 +6,10 @@ using System.Threading.Tasks;
 
 namespace GitHub_Mirror_Fetcher.Repository
 {
-    interface IUserRepository
+    public interface IUserRepository
     {
         IEnumerable<string> GetLocations(int page);
+        IEnumerable<Project> GetUserProjects(int userId);
         IEnumerable<User> GetUsers(int page); 
     }
 }
