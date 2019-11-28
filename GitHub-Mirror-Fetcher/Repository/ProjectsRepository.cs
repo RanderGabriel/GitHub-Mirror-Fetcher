@@ -10,7 +10,7 @@ namespace GitHub_Mirror_Fetcher.Repository
 {
     public class ProjectsRepository : IProjectRepository
     {
-        public MySqlConnection sqlConnection = new MySqlConnection("Server=127.0.0.1; Uid=root; Pwd=rootpassword ;Database=ghtorrent_restore;Connect Timeout=300");
+        public MySqlConnection sqlConnection = new MySqlConnection("Server=127.0.0.1;Port=3307; Uid=root; Pwd=rootpassword ;Database=ghtorrent_restore;Connect Timeout=300");
 
         public IEnumerable<Project> GetProjects(int page)
         {

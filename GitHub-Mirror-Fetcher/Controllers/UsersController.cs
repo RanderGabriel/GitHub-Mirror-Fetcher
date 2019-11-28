@@ -30,11 +30,18 @@ namespace GitHub_Mirror_Fetcher.Controllers
             return _userRepo.GetUsers(page);
         }
         //GET api/users/{id}/projects
-        [HttpGet("{id}/projects")]
-        public IEnumerable<Project> GetProjectsForUser(int id)
+        [HttpGet("projects")]
+        public IEnumerable<Project> GetProjectsForUser(string login)
         {
-            return _userRepo.GetUserProjects(id);
+            return _userRepo.GetUserProjects(login);
         }
+
+        [HttpGet("stats")]
+        public IEnumerable<Stats> GetUserStats()
+        {
+            return _userRepo.GetUserStats();
+        }
+
         // GET api/users/locations
         [HttpGet("locations")]
         public IEnumerable<string> GetLocations(int page = 0)
@@ -43,4 +50,5 @@ namespace GitHub_Mirror_Fetcher.Controllers
         }
 
     }
+
 }
