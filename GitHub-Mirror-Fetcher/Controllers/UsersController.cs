@@ -15,7 +15,13 @@ namespace GitHub_Mirror_Fetcher.Controllers
         public IUserRepository _userRepo;
         public UsersController()
         {
-            _userRepo = new UserRepository();
+            this._userRepo = new UserRepository();
+        }
+
+        [HttpGet("retrieveUser/{login}")]
+        public User GetByLogin(string login)
+        {
+            return _userRepo.GetByLogin(login);
         }
         //GET api/users
         [HttpGet]

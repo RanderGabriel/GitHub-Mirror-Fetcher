@@ -10,7 +10,7 @@ namespace GitHub_Mirror_Fetcher.Repository
 {
     public class UserRepository : IUserRepository
     {
-        public MySqlConnection sqlConnection = new MySqlConnection("Server=127.0.0.1; Uid=****; Pwd=************ ;Database=ghtorrent_restore;");
+        public MySqlConnection sqlConnection = new MySqlConnection("Server=127.0.0.1; Uid=root; Pwd=rootpassword ;Database=ghtorrent_restore;");
         
         public IEnumerable<string> GetLocations(int page)
         {
@@ -31,6 +31,13 @@ namespace GitHub_Mirror_Fetcher.Repository
             sqlConnection.Open();
             var query = sqlConnection.Query<Project>($"SELECT * FROM projects WHERE owner_id = {userId}");
             return query;
+        }
+
+        public User GetByLogin(string login)
+        {
+            sqlConnection.Open();
+            var query = sqlConnection.Query<User>($"SELECT * FROM users WHERE login = '{login}'");
+            return query.FirstOrDefault();
         }
     }
 }
